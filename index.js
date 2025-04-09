@@ -18,6 +18,8 @@ extractButton.addEventListener('click', async () => {
                     const result = await Tesseract.recognize(img);
                     const days = document.getElementById("days").value;
                     outputTextarea.value = `${result.data.text.trim()} Dias: ${days}`;
+                    outputTextarea.style.height = "auto";
+                    outputTextarea.style.height = outputTextarea.scrollHeight + "px";
                 } catch (error) {
                     console.error('Error: ', error);
                 }
@@ -37,8 +39,9 @@ extractButtonText.addEventListener('click', async () => {
             img.onload = async () => {
                 try {
                     const result = await Tesseract.recognize(img);
-
                     outputTextarea.value = `${result.data.text.trim()}`
+                    outputTextarea.style.height = "auto";
+                    outputTextarea.style.height = outputTextarea.scrollHeight + "px";
                 } catch (error) {
                     console.error('Error: ', error);
                 }
@@ -75,5 +78,3 @@ const alert = document.getElementById("alert");
           appendAlert('Texto copiado com sucesso!', 'success')
         })
 }
-
-
